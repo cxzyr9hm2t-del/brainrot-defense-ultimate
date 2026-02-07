@@ -12,15 +12,9 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{overflow:hidden;background:var(--bg);font-family:'Bangers',cursive;touch-action:manipulation;user-select:none;-webkit-tap-highlight-color:transparent;cursor:crosshair}
-
-/* ══════ CANVASES ══════ */
 #bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0}
 #fx-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:500;pointer-events:none}
-
-/* ══════ VIEWPORT ══════ */
 #viewport{position:fixed;width:100%;height:100%;overflow:hidden;z-index:1}
-
-/* ══════ GROUND ══════ */
 #ground{position:absolute;bottom:0;left:-5%;width:110%;height:30%;
 background:linear-gradient(0deg,#0d0d2b 0%,#1a0a3a 100%);
 border-top:4px solid var(--g);box-shadow:0 -8px 40px rgba(57,255,20,0.25)}
@@ -31,14 +25,11 @@ animation:gridScroll 1.5s linear infinite}
 @keyframes gridScroll{to{background-position:0 60px}}
 .ground-glow{position:absolute;bottom:29%;left:0;width:100%;height:40px;
 background:linear-gradient(0deg,rgba(57,255,20,0.15),transparent);pointer-events:none;z-index:2}
-
-/* ══════ HERO ══════ */
 #hero-wrap{position:absolute;bottom:24%;left:50%;transform:translateX(-50%);z-index:10;transition:left 0.3s}
 #hero-rig{width:120px;height:180px;position:relative;filter:drop-shadow(0 0 12px rgba(57,255,20,0.4));transition:transform 0.1s}
 #hero-rig.hit-flash{filter:brightness(4) drop-shadow(0 0 30px #fff)}
 #hero-rig.damaged{animation:damageFlash 0.5s}
 @keyframes damageFlash{0%,100%{filter:none}25%{filter:brightness(0.3) sepia(1) hue-rotate(-50deg)}50%{filter:brightness(2) sepia(1) hue-rotate(-50deg)}75%{filter:brightness(0.5)}}
-
 .head{width:60px;height:60px;background:#FFD700;position:absolute;left:30px;border-radius:12px;border:4px solid #000;z-index:5;transition:0.5s}
 .face{font-size:30px;position:absolute;top:10px;left:12px;transition:0.3s}
 .jaw{position:absolute;bottom:-8px;left:-8px;width:76px;height:0;background:#FFD700;border:4px solid #000;border-radius:5px;transition:height 0.4s;overflow:hidden}
@@ -48,20 +39,15 @@ background:linear-gradient(0deg,rgba(57,255,20,0.15),transparent);pointer-events
 .l-leg{width:35px;height:70px;background:#4D9E48;position:absolute;top:140px;left:20px;border:4px solid #000;animation:walk .3s infinite alternate-reverse}
 .r-leg{width:35px;height:70px;background:#4D9E48;position:absolute;top:140px;left:65px;border:4px solid #000;animation:walk .3s infinite alternate}
 @keyframes walk{from{transform:translateY(0)}to{transform:translateY(-8px)}}
-
-/* Hero Aura */
 .hero-aura{position:absolute;top:-40px;left:-40px;width:200px;height:260px;border-radius:50%;opacity:0;transition:0.5s;pointer-events:none;
 background:radial-gradient(circle,rgba(57,255,20,0.25),transparent 70%);animation:auraPulse 1s infinite}
 .aura-active{opacity:1}
 @keyframes auraPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
-
-/* Shield bubble */
 .shield-bubble{position:absolute;top:-20px;left:-15px;width:150px;height:220px;border-radius:50%;
 border:3px solid var(--cy);background:rgba(0,240,255,0.08);opacity:0;transition:0.3s;pointer-events:none;
 box-shadow:0 0 20px rgba(0,240,255,0.3),inset 0 0 20px rgba(0,240,255,0.1)}
 .shield-active{opacity:1;animation:shieldPulse 1s infinite}
 @keyframes shieldPulse{0%,100%{transform:scale(1);border-color:var(--cy)}50%{transform:scale(1.04);border-color:#fff}}
-
 /* SKINS */
 .skin-camera .head{background:#333}.skin-camera .head::after{content:'';position:absolute;width:40px;height:40px;background:#111;border:4px solid #fff;top:10px;left:6px;border-radius:50%}
 .skin-camera .head::before{content:'';position:absolute;width:14px;height:8px;background:red;top:3px;right:5px;border-radius:3px;z-index:2}
@@ -80,8 +66,7 @@ box-shadow:0 0 20px rgba(0,240,255,0.3),inset 0 0 20px rgba(0,240,255,0.1)}
 .skin-void .l-leg,.skin-void .r-leg{background:#0a0a0a;border-color:#a855f7}
 .skin-void{filter:drop-shadow(0 0 20px rgba(168,85,247,0.7))!important}
 .skin-void .face{filter:hue-rotate(270deg) brightness(2)}
-
-/* ══════ ENEMIES ══════ */
+/* ENEMIES */
 .enemy-rig{position:absolute;z-index:5;transition:transform 0.15s,opacity 0.4s;filter:drop-shadow(0 0 8px rgba(255,0,0,0.4))}
 .enemy-rig.dying{transform:scale(0) rotate(720deg)!important;opacity:0!important}
 .toilet-bowl{width:90px;height:60px;background:#fff;border:3px solid #000;border-radius:0 0 35px 35px;position:absolute;top:75px;left:15px}
@@ -92,20 +77,13 @@ border-radius:28px;animation:bob .3s infinite alternate;display:flex;align-items
 .enemy-hp-bar{position:absolute;top:-12px;left:5%;width:90%;height:8px;background:#222;border:2px solid #fff;border-radius:5px;overflow:hidden}
 .enemy-hp-fill{width:100%;height:100%;background:linear-gradient(90deg,#ff0000,#ff6600);transition:width 0.15s;border-radius:3px}
 .enemy-label{position:absolute;bottom:-18px;width:100%;text-align:center;font-size:11px;color:#aaa;font-family:'Silkscreen'}
-
-/* Cameraman enemy variant */
 .enemy-cam .toilet-bowl{background:#444;border-radius:10px}.enemy-cam .toilet-tank{background:#555;border-radius:5px}
 .enemy-cam .toilet-head{background:#333;border-radius:50%}.enemy-cam .toilet-head::after{content:'';position:absolute;width:30px;height:30px;background:#111;border:3px solid #fff;border-radius:50%;top:16px;left:10px}
-/* Boss variant */
 .enemy-boss .toilet-bowl{background:#330000;border-color:#ff0}.enemy-boss .toilet-tank{background:#440000;border-color:#ff0}
 .enemy-boss .toilet-head{background:#600;font-size:40px;width:65px;height:78px}.enemy-boss .enemy-hp-fill{background:linear-gradient(90deg,#ff0,#f00)}
-
-/* Enemy projectile */
-.projectile{position:absolute;width:20px;height:20px;border-radius:50%;z-index:8;pointer-events:none;
-animation:projMove 2s linear forwards}
+.projectile{position:absolute;width:20px;height:20px;border-radius:50%;z-index:8;pointer-events:none;animation:projMove 2s linear forwards}
 @keyframes projMove{0%{opacity:1}90%{opacity:1}100%{opacity:0}}
-
-/* ══════ WORD TARGET ══════ */
+/* WORD TARGET */
 #word-target{position:absolute;top:30%;width:100%;text-align:center;
 font-family:'Bungee Shade',cursive;font-size:clamp(36px,11vw,95px);
 color:#fff;z-index:50;pointer-events:none;
@@ -118,221 +96,204 @@ transition:transform 0.1s,color 0.1s}
 .word-fire{color:#ff6600;text-shadow:0 0 20px #ff3300,0 0 50px #ff6600,0 -10px 30px #ffcc00,4px 4px 0 #000}
 .word-ice{color:#88ddff;text-shadow:0 0 20px #00aaff,0 0 50px #0088ff,4px 4px 0 #000;animation:iceShimmer 1s infinite}
 @keyframes iceShimmer{0%,100%{filter:brightness(1)}50%{filter:brightness(1.3)}}
-#word-sub{position:absolute;top:44%;width:100%;text-align:center;font-size:clamp(14px,3vw,22px);color:rgba(255,255,255,0.4);z-index:50;pointer-events:none;font-family:'Silkscreen'}
-
-/* ══════ TAX EVENT ══════ */
+#word-sub{position:absolute;top:44%;width:100%;text-align:center;font-size:clamp(16px,4vw,26px);color:rgba(255,255,255,0.5);z-index:50;pointer-events:none;font-family:'Silkscreen'}
+/* TAX EVENT */
 #tax-event{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(200,0,0,0.45);
 display:none;z-index:100;flex-direction:column;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
 #tax-food{font-size:min(180px,35vw);animation:chomp .2s infinite}
 @keyframes chomp{0%{transform:scale(1) rotate(-5deg)}50%{transform:scale(.82) rotate(5deg)}}
-
-/* ══════ HUD ══════ */
+/* HUD */
 #hud{position:fixed;top:0;left:0;width:100%;z-index:60;padding:8px 12px;display:flex;justify-content:space-between;align-items:flex-start;pointer-events:none}
 .hud-col{display:flex;flex-direction:column;gap:5px;pointer-events:auto}
 .hud-card{background:var(--card);border:2px solid rgba(0,240,255,0.3);border-radius:10px;padding:5px 10px;
 color:#fff;font-size:clamp(13px,3vw,20px);box-shadow:0 0 12px rgba(0,240,255,0.1);backdrop-filter:blur(8px)}
 .hud-center{position:absolute;left:50%;transform:translateX(-50%);text-align:center}
 .rizz-val{color:var(--gd);font-size:clamp(18px,4.5vw,30px)}.combo-val{color:var(--pk)}.wave-val{color:var(--g)}.streak-val{color:var(--cy)}
-
-/* XP Bar */
 #xp-wrap{position:fixed;bottom:68px;left:50%;transform:translateX(-50%);width:min(75%,450px);z-index:70}
 #xp-label{text-align:center;color:var(--g);font-size:12px;font-family:'Silkscreen';margin-bottom:3px}
 #xp-bar{height:12px;background:rgba(0,0,0,0.5);border:2px solid var(--g);border-radius:8px;overflow:hidden}
 #xp-fill{height:100%;width:0%;border-radius:8px;transition:width .3s;
 background:linear-gradient(90deg,var(--g),var(--cy),var(--pk));box-shadow:0 0 8px var(--g)}
-
-/* ══════ FLOAT TEXT ══════ */
 .float-text{position:absolute;z-index:200;font-family:'Bangers';font-size:32px;color:var(--gd);pointer-events:none;
 text-shadow:2px 2px 0 #000,0 0 8px var(--gd);animation:floatUp .9s ease-out forwards;white-space:nowrap}
 @keyframes floatUp{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-110px) scale(1.4)}}
 .float-big{font-size:clamp(36px,7vw,56px);animation:floatBig 1.2s ease-out forwards}
-@keyframes floatBig{0%{opacity:1;transform:translateY(0) scale(0.5) rotate(-5deg)}30%{transform:translateY(-30px) scale(1.3) rotate(3deg)}100%{opacity:0;transform:translateY(-150px) scale(0.8)}}
-
-/* ══════ POWER-UPS ══════ */
-.power-up{position:absolute;width:46px;height:46px;z-index:40;border-radius:50%;
-display:flex;align-items:center;justify-content:center;font-size:26px;cursor:pointer;
-border:3px solid #fff;box-shadow:0 0 16px rgba(255,255,255,0.4);
-animation:puFloat 1.2s ease-in-out infinite,puDrop 2.5s ease-in forwards}
-@keyframes puFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-@keyframes puDrop{0%{top:-50px}100%{top:50%}}
-
-/* ══════ SHOP ══════ */
-#shop-btn{position:fixed;bottom:68px;left:12px;background:linear-gradient(135deg,var(--pk),#cc00aa);border:3px solid #fff;
-padding:8px 16px;font-family:'Bangers';font-size:clamp(14px,3vw,20px);border-radius:14px;color:#fff;
-cursor:pointer;z-index:80;display:none;box-shadow:0 0 15px rgba(255,110,199,0.4);letter-spacing:1px}
-#shop-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(6,6,15,0.95);
-display:none;z-index:400;overflow-y:auto;padding:20px;backdrop-filter:blur(6px)}
-.shop-title{text-align:center;font-family:'Bungee Shade';font-size:clamp(28px,7vw,48px);color:var(--gd);margin:10px 0 20px;text-shadow:0 0 20px var(--gd)}
-.shop-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;max-width:600px;margin:0 auto}
-.shop-item{background:var(--card);border:2px solid rgba(255,255,255,0.15);border-radius:14px;padding:14px;text-align:center;
-cursor:pointer;transition:0.2s;color:#fff}
-.shop-item:hover,.shop-item:active{border-color:var(--gd);transform:scale(1.04);box-shadow:0 0 20px rgba(255,215,0,0.2)}
-.shop-item.owned{border-color:var(--g);opacity:0.6;pointer-events:none}
-.shop-emoji{font-size:40px;margin-bottom:6px}.shop-name{font-size:16px;margin-bottom:4px}.shop-cost{color:var(--gd);font-size:14px}
-.shop-close{display:block;margin:20px auto;padding:10px 30px;font-family:'Bangers';font-size:20px;background:var(--rd);border:3px solid #fff;border-radius:12px;color:#fff;cursor:pointer}
-
-/* ══════ RNG ══════ */
-#rng-btn{position:fixed;bottom:68px;right:12px;background:linear-gradient(135deg,#FFD700,#FF8C00);border:3px solid #fff;
-padding:8px 16px;font-family:'Bangers';font-size:clamp(14px,3vw,20px);border-radius:14px;color:#000;
-cursor:pointer;z-index:80;display:none;box-shadow:0 0 15px rgba(255,215,0,0.4);animation:pulse .6s infinite;letter-spacing:1px}
-@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
-#rng-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.96);
-display:none;flex-direction:column;align-items:center;justify-content:center;z-index:450}
-#aura-spin{font-size:min(110px,22vw);transition:transform .08s}
-#aura-name{color:#fff;font-size:clamp(24px,5vw,44px);font-family:'Bungee Shade';margin-top:16px}
-#rng-rarity{font-size:20px;margin-top:8px}
-.rarity-common{color:#aaa}.rarity-rare{color:#4FC3F7}.rarity-epic{color:#CE93D8}.rarity-legendary{color:#FFD700;text-shadow:0 0 15px #FFD700}.rarity-mythic{color:#ff44ff;text-shadow:0 0 20px #ff44ff,0 0 40px #aa00ff}
-
-/* ══════ ACHIEVEMENT ══════ */
-.ach-toast{position:fixed;top:-90px;left:50%;transform:translateX(-50%);
-background:linear-gradient(135deg,#1a1a2e,#2d1b4e);border:2px solid var(--gd);
-padding:10px 20px;border-radius:12px;z-index:500;color:#fff;font-size:16px;text-align:center;min-width:230px;
-box-shadow:0 0 25px rgba(255,215,0,0.35);animation:toastIn 3.5s ease forwards}
-@keyframes toastIn{0%{top:-90px}12%{top:25px}82%{top:25px}100%{top:-90px}}
-.ach-label{color:var(--gd);font-family:'Silkscreen';font-size:11px;letter-spacing:2px}
-
-/* ══════ WAVE ANNOUNCE ══════ */
-#wave-ann{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);
-font-family:'Bungee Shade';font-size:clamp(36px,9vw,72px);color:var(--rd);z-index:250;pointer-events:none;
-text-shadow:0 0 25px var(--rd),4px 4px 0 #000;transition:transform .3s,opacity .3s}
-
-/* ══════ TITLE ══════ */
-#title{position:fixed;top:0;left:0;width:100%;height:100%;
-background:radial-gradient(ellipse at 50% 40%,#1a0044,#06060f);
-display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1000;gap:12px}
-#title h1{font-family:'Bungee Shade';font-size:clamp(24px,7vw,62px);color:var(--g);
-text-shadow:0 0 25px var(--g),4px 4px 0 #000;text-align:center;line-height:1.15}
-#title h2{font-family:'Bangers';font-size:clamp(16px,4vw,30px);color:var(--pk);text-shadow:0 0 12px var(--pk)}
-.title-emoji{font-size:clamp(44px,10vw,90px);animation:bob .4s infinite alternate}
-#start-btn{margin-top:16px;padding:14px 44px;font-family:'Bungee Shade';font-size:clamp(18px,4.5vw,32px);
-background:linear-gradient(135deg,var(--g),#00cc00);border:4px solid #fff;border-radius:18px;color:#000;
-cursor:pointer;box-shadow:0 0 25px var(--g);animation:pulse .8s infinite;letter-spacing:2px}
-.title-tip{color:#666;font-size:12px;font-family:'Silkscreen';margin-top:18px;text-align:center;max-width:300px;line-height:1.4}
-
-/* ══════ COMBO BORDER ══════ */
-#combo-border{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:55;opacity:0;transition:opacity .3s;
-border:5px solid var(--pk);box-shadow:inset 0 0 50px rgba(255,110,199,0.2)}.combo-active{opacity:1!important}
-#combo-border.fire-mode{border-color:#ff6600;box-shadow:inset 0 0 60px rgba(255,100,0,0.3)}
-
-/* ══════ SCREEN FX ══════ */
-.screen-shake{animation:shake .25s ease-out}
-@keyframes shake{0%{transform:translate(0)}20%{transform:translate(-6px,4px)}40%{transform:translate(6px,-4px)}60%{transform:translate(-4px,6px)}80%{transform:translate(4px,-2px)}100%{transform:translate(0)}}
-.screen-shake-big{animation:shakeBig .4s ease-out}
-@keyframes shakeBig{0%{transform:translate(0)}10%{transform:translate(-12px,8px)}20%{transform:translate(12px,-8px)}30%{transform:translate(-8px,12px)}40%{transform:translate(8px,-4px)}50%{transform:translate(-4px,8px)}60%{transform:translate(6px,-6px)}80%{transform:translate(2px,-2px)}100%{transform:translate(0)}}
-
-/* ══════ DAD DOCK ══════ */
-#dad-dock{position:fixed;bottom:0;width:100%;height:50px;background:rgba(0,0,0,0.92);
-display:none;transform:translateY(44px);transition:.3s;z-index:600;border-top:3px solid var(--g);
-justify-content:center;align-items:stretch}
-#dad-dock:hover,#dad-dock:active{transform:translateY(0)}
-.dad-btn{flex:1;max-width:80px;border:none;background:rgba(57,255,20,0.08);color:#fff;font-size:12px;
-cursor:pointer;font-family:'Bangers';border-right:1px solid rgba(57,255,20,0.15);transition:.2s}
-.dad-btn:active{background:rgba(57,255,20,0.25)}
-
-/* ══════ RESPONSIVE ══════ */
-@media(max-width:500px){.hud-card{font-size:12px;padding:4px 7px}.float-text{font-size:24px}}
+@keyframes floatBig{0%{opacity:1;transform:translateY(0) scale(1.2)}100%{opacity:0;transform:translateY(-130px) scale(1.8)}}
+/* POWER-UPS */
+.power-up{position:absolute;top:-50px;width:46px;height:46px;border-radius:50%;font-size:24px;display:flex;align-items:center;justify-content:center;
+cursor:pointer;z-index:30;animation:puFall 5.5s linear forwards;border:2px solid #fff;box-shadow:0 0 15px rgba(255,255,255,0.4)}
+@keyframes puFall{0%{top:-50px;transform:rotate(0deg) scale(0.5)}10%{transform:rotate(20deg) scale(1.2)}100%{top:75%;transform:rotate(360deg) scale(1)}}
+/* SCREEN SHAKE */
+.screen-shake{animation:shake .15s}
+.screen-shake-big{animation:shakeBig .3s}
+@keyframes shake{0%{transform:translate(3px,2px)}25%{transform:translate(-3px,-2px)}50%{transform:translate(2px,-3px)}100%{transform:none}}
+@keyframes shakeBig{0%{transform:translate(8px,5px)}25%{transform:translate(-8px,-5px)}50%{transform:translate(5px,-8px)}100%{transform:none}}
+/* COMBO BORDER */
+#combo-border{position:fixed;inset:0;z-index:55;pointer-events:none;border:0 solid transparent;transition:0.3s}
+.combo-active{border:4px solid var(--pk)!important;box-shadow:inset 0 0 40px rgba(255,110,199,0.15)!important}
+.fire-mode{border-color:var(--rd)!important;box-shadow:inset 0 0 60px rgba(255,49,49,0.2)!important;animation:fireGlow .4s infinite!important}
+@keyframes fireGlow{0%,100%{border-color:var(--rd)}50%{border-color:#ff6600}}
+/* WAVE ANNOUNCE */
+#wave-ann{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);opacity:0;
+font-family:'Bungee Shade';font-size:clamp(30px,10vw,80px);color:var(--g);z-index:200;pointer-events:none;
+text-shadow:0 0 30px var(--g),4px 4px 0 #000;transition:transform .4s,opacity .4s;white-space:nowrap}
+/* BOTTOM DOCK */
+#dad-dock{position:fixed;bottom:8px;left:50%;transform:translateX(-50%);z-index:80;display:none;gap:8px;align-items:center}
+.dock-btn{background:var(--card);border:2px solid var(--g);border-radius:12px;padding:6px 14px;color:var(--g);
+font-family:'Silkscreen';font-size:clamp(11px,2.5vw,16px);cursor:pointer;white-space:nowrap;transition:0.2s}
+.dock-btn:active{transform:scale(0.92)}
+/* OVERLAYS */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:300;display:none;flex-direction:column;align-items:center;justify-content:center;backdrop-filter:blur(6px)}
+.overlay-title{font-family:'Bungee Shade';font-size:clamp(22px,5vw,44px);color:var(--g);text-shadow:0 0 20px var(--g);margin-bottom:15px}
+.shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;max-width:600px;width:90%;padding:10px}
+.shop-item{background:var(--card);border:2px solid rgba(0,240,255,0.2);border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:0.2s;color:#fff}
+.shop-item:hover{border-color:var(--g);transform:scale(1.05)}.shop-item.owned{opacity:0.5}
+.shop-emoji{font-size:32px;margin-bottom:5px}.shop-name{font-size:14px;font-family:'Silkscreen'}.shop-cost{color:var(--gd);font-size:16px;margin-top:5px}
+#rng-overlay{font-size:24px;color:#fff}
+#aura-spin{font-size:min(120px,25vw);display:block;margin:15px auto;transition:transform 0.08s}
+#aura-name{font-family:'Bungee Shade';font-size:clamp(20px,5vw,36px);margin-top:10px;color:var(--gd)}
+.rarity-common{color:#aaa}.rarity-rare{color:#4FC3F7}.rarity-epic{color:#CE93D8}.rarity-legendary{color:#FFD700;text-shadow:0 0 15px #FFD700}.rarity-mythic{color:#ff44ff;text-shadow:0 0 20px #ff44ff;animation:glitch .2s infinite}
+/* ACHIEVEMENT TOAST */
+.ach-toast{position:fixed;top:15%;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#1a0a3a,#0d0d2b);
+border:2px solid var(--gd);border-radius:14px;padding:12px 24px;color:#fff;font-size:16px;text-align:center;z-index:500;
+animation:achIn .4s ease-out,achOut .4s 3.5s forwards;box-shadow:0 0 30px rgba(255,215,0,0.3)}
+@keyframes achIn{from{transform:translateX(-50%) translateY(-30px) scale(0.5);opacity:0}to{transform:translateX(-50%) translateY(0) scale(1);opacity:1}}
+@keyframes achOut{to{transform:translateX(-50%) translateY(-30px);opacity:0}}
+.ach-label{font-size:11px;color:var(--gd);font-family:'Silkscreen';letter-spacing:2px;margin-bottom:4px}
+/* ══════ ADHD-FRIENDLY ENHANCEMENTS ══════ */
+/* Big glowing TAP button */
+#big-tap-btn{position:fixed;bottom:100px;left:50%;transform:translateX(-50%);z-index:75;
+width:min(280px,70vw);height:70px;border-radius:20px;border:4px solid var(--g);
+background:linear-gradient(135deg,rgba(57,255,20,0.3),rgba(0,240,255,0.2));
+color:var(--g);font-family:'Bangers';font-size:clamp(24px,5vw,36px);cursor:pointer;
+display:none;align-items:center;justify-content:center;gap:10px;
+box-shadow:0 0 30px rgba(57,255,20,0.4),inset 0 0 20px rgba(57,255,20,0.1);
+animation:tapPulse 1.2s infinite;backdrop-filter:blur(4px);letter-spacing:2px}
+#big-tap-btn:active{transform:translateX(-50%) scale(0.9);filter:brightness(2)}
+@keyframes tapPulse{0%,100%{box-shadow:0 0 30px rgba(57,255,20,0.4);transform:translateX(-50%) scale(1)}50%{box-shadow:0 0 50px rgba(57,255,20,0.7);transform:translateX(-50%) scale(1.05)}}
+/* Encouragement banner */
+#encourage{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);opacity:0;
+font-family:'Bangers';font-size:clamp(28px,7vw,60px);z-index:250;pointer-events:none;
+transition:transform .3s,opacity .3s;white-space:nowrap}
+.encourage-show{transform:translate(-50%,-50%) scale(1)!important;opacity:1!important}
+/* Break reminder */
+#break-reminder{position:fixed;inset:0;background:rgba(0,0,30,0.92);z-index:400;display:none;
+flex-direction:column;align-items:center;justify-content:center;backdrop-filter:blur(8px);color:#fff;text-align:center}
+#break-reminder .break-emoji{font-size:min(120px,25vw);margin-bottom:20px}
+#break-reminder h2{font-family:'Bungee Shade';font-size:clamp(24px,5vw,40px);color:var(--cy);margin-bottom:10px}
+#break-reminder p{font-size:clamp(14px,3vw,20px);color:#aaa;margin-bottom:20px;max-width:80%}
+#break-reminder button{background:var(--g);color:#000;border:none;border-radius:15px;padding:12px 30px;font-family:'Bangers';font-size:20px;cursor:pointer}
+/* Difficulty selector on title */
+#difficulty-select{display:flex;gap:12px;margin-top:15px;flex-wrap:wrap;justify-content:center}
+.diff-btn{padding:10px 20px;border-radius:15px;border:3px solid;font-family:'Bangers';font-size:clamp(16px,3vw,22px);cursor:pointer;transition:0.2s;min-width:90px}
+.diff-btn:hover,.diff-btn:active{transform:scale(1.1)}
+.diff-easy{border-color:var(--g);color:var(--g);background:rgba(57,255,20,0.15)}
+.diff-easy:hover{background:rgba(57,255,20,0.3)}
+.diff-normal{border-color:var(--gd);color:var(--gd);background:rgba(255,215,0,0.15)}
+.diff-normal:hover{background:rgba(255,215,0,0.3)}
+.diff-hard{border-color:var(--rd);color:var(--rd);background:rgba(255,49,49,0.15)}
+.diff-hard:hover{background:rgba(255,49,49,0.3)}
+/* Rainbow celebration */
+@keyframes rainbowBg{0%{border-color:#ff0000}14%{border-color:#ff8800}28%{border-color:#ffff00}42%{border-color:#00ff00}57%{border-color:#0088ff}71%{border-color:#8800ff}85%{border-color:#ff00ff}100%{border-color:#ff0000}}
+.rainbow-mode{animation:rainbowBg 1s linear infinite!important;box-shadow:inset 0 0 80px rgba(255,255,255,0.1)!important}
+/* Title screen additions */
+#title{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--bg)}
+#title h1{font-family:'Bungee Shade';font-size:clamp(28px,8vw,70px);color:var(--g);text-shadow:0 0 30px var(--g),4px 4px 0 #000;line-height:1.1;text-align:center}
+#title h2{font-family:'Silkscreen';font-size:clamp(12px,2.5vw,18px);color:var(--pk);margin:5px 0 15px}
+.title-icons{font-size:min(70px,15vw);margin-bottom:10px}
+#start-btn{padding:14px 50px;border-radius:20px;border:4px solid var(--g);background:var(--g);color:#000;font-family:'Bangers';font-size:clamp(22px,5vw,34px);cursor:pointer;margin-top:10px;transition:0.2s;letter-spacing:2px}
+#start-btn:active{transform:scale(0.92)}
+.title-hint{font-family:'Silkscreen';font-size:clamp(10px,2vw,14px);color:rgba(255,255,255,0.35);margin-top:12px;text-align:center;max-width:80%;line-height:1.5}
 </style>
 </head>
 <body>
-
-<!-- TITLE -->
-<div id="title">
-<div class="title-emoji">🚽⚔️🧑</div>
-<h1>BRAINROT<br>DEFENSE</h1>
-<h2>OHIO vs. SKIBIDI — ULTIMATE</h2>
-<button id="start-btn" onclick="initGame()">TAP TO PLAY</button>
-<div class="title-tip">🔊 Volume UP for full experience!<br>Shout the words or tap to attack.<br>Dodge enemy attacks. Collect power-ups. Get max Rizz.</div>
-</div>
-
-<!-- CANVASES -->
 <canvas id="bg-canvas"></canvas>
 <canvas id="fx-canvas"></canvas>
-
-<!-- GAME -->
+<div id="combo-border"></div>
+<div id="title">
+<div class="title-icons">🚽 ⚔️ 🧑</div>
+<h1>BRAINROT<br>DEFENSE</h1>
+<h2>OHIO VS. SKIBIDI — ULTIMATE</h2>
+<div id="difficulty-select">
+<button class="diff-btn diff-easy" onclick="setDiff('easy')">😊 EASY</button>
+<button class="diff-btn diff-normal" onclick="setDiff('normal')">😎 NORMAL</button>
+<button class="diff-btn diff-hard" onclick="setDiff('hard')">💀 HARD</button>
+</div>
+<button id="start-btn" onclick="initGame()">TAP TO PLAY</button>
+<div class="title-hint">🔊 VOLUME UP FOR FULL EXPERIENCE!<br>SHOUT THE WORDS OR TAP TO ATTACK.<br>DODGE ENEMY ATTACKS. COLLECT POWER-UPS. GET MAX RIZZ.</div>
+</div>
 <div id="viewport">
-<div class="ground-glow"></div>
 <div id="ground"></div>
+<div class="ground-glow"></div>
 <div id="enemies"></div>
-
-<!-- HERO -->
 <div id="hero-wrap">
-<div id="hero-rig">
 <div class="hero-aura" id="hero-aura"></div>
 <div class="shield-bubble" id="shield-bubble"></div>
+<div id="hero-rig">
 <div class="head"><div class="face">🙂</div><div class="jaw"></div></div>
 <div class="torso"></div>
-<div class="l-arm"></div><div class="r-arm"></div>
-<div class="l-leg"></div><div class="r-leg"></div>
+<div class="l-arm"></div>
+<div class="r-arm"></div>
+<div class="l-leg"></div>
+<div class="r-leg"></div>
 </div>
 </div>
-
-<!-- TAX -->
-<div id="tax-event">
-<h1 style="color:red;font-family:'Bungee Shade';font-size:clamp(26px,7vw,50px);text-shadow:4px 4px 0 #000">⚠️ FANUM TAX ⚠️</h1>
-<div id="tax-food">🍔</div>
-<h2 style="color:var(--rd);font-size:22px;animation:glitch .15s infinite">-RIZZ DRAINING-</h2>
-<h2 style="color:#fff;font-size:clamp(16px,3.5vw,24px);margin-top:8px">SHOUT OR TAP TO PAY!</h2>
-</div>
-
 <div id="word-target"></div>
 <div id="word-sub"></div>
+<div id="wave-ann"></div>
 </div>
-
-<div id="combo-border"></div>
-
-<!-- HUD -->
 <div id="hud">
 <div class="hud-col">
-<div class="hud-card">⚡ <span class="rizz-val" id="rizz">0</span></div>
-<div class="hud-card">🔥 <span class="combo-val" id="combo">0</span>x</div>
-<div class="hud-card">📝 <span class="streak-val" id="streak">0</span></div>
+<div class="hud-card">⚡ <span id="rizz" class="rizz-val">0</span></div>
+<div class="hud-card">🔥 <span id="combo" class="combo-val">0</span>x</div>
+<div class="hud-card">🏁 <span id="streak" class="streak-val">0</span></div>
 </div>
-<div class="hud-center"><div class="hud-card" style="border-color:rgba(255,49,49,0.4)">🌊 <span class="wave-val" id="wave">1</span></div></div>
+<div class="hud-col hud-center">
+<div class="hud-card">🌊 <span id="wave" class="wave-val">1</span></div>
+</div>
 <div class="hud-col" style="align-items:flex-end">
-<div class="hud-card">❤️ <span id="lives"></span></div>
-<div class="hud-card">🏆 <span id="best" style="color:var(--gd)">0</span></div>
+<div class="hud-card">❤️ <span id="lives">★★★★★</span></div>
+<div class="hud-card">🏆 <span id="best" class="rizz-val">0</span></div>
 </div>
 </div>
-
-<div id="xp-wrap"><div id="xp-label">NEXT WAVE ▶</div><div id="xp-bar"><div id="xp-fill"></div></div></div>
-<div id="wave-ann"></div>
-
-<button id="shop-btn" onclick="openShop()">🛒 SHOP</button>
-<button id="rng-btn" onclick="rollRng()">🎰 RNG</button>
-
-<!-- RNG -->
-<div id="rng-overlay"><div id="aura-spin">❓</div><div id="aura-name">ROLLING...</div><div id="rng-rarity"></div></div>
-
-<!-- SHOP -->
-<div id="shop-overlay">
-<div class="shop-title">🛒 BRAINROT SHOP</div>
-<div class="shop-grid" id="shop-grid"></div>
-<button class="shop-close" onclick="closeShop()">CLOSE</button>
-</div>
-
-<!-- DAD DOCK -->
+<div id="xp-wrap"><div id="xp-label">NEXT WAVE</div><div id="xp-bar"><div id="xp-fill"></div></div></div>
+<button id="big-tap-btn" onclick="hit()">👆 TAP HERE! 👆</button>
 <div id="dad-dock">
-<button class="dad-btn" onclick="triggerTax()">🍔TAX</button>
-<button class="dad-btn" onclick="spawnEnemy('toilet')">🚽</button>
-<button class="dad-btn" onclick="spawnEnemy('cam')">📷</button>
-<button class="dad-btn" onclick="spawnEnemy('boss')">👹</button>
-<button class="dad-btn" onclick="addRizz(300)">📈</button>
-<button class="dad-btn" onclick="dropPowerUp()">🎁</button>
-<button class="dad-btn" onclick="addLife()">❤️</button>
-<button class="dad-btn" onclick="playSfx('vine')">💥</button>
+<button class="dock-btn" id="rng-btn" style="display:none" onclick="rollRng()">🎰 SPIN (150)</button>
+<button class="dock-btn" id="shop-btn" style="display:none" onclick="openShop()">🛒 SHOP</button>
 </div>
-
+<div id="encourage"></div>
+<div id="tax-event"><div id="tax-food">🍔</div><div style="font-family:'Bungee Shade';font-size:clamp(24px,6vw,50px);color:#fff;margin-top:15px">FANUM TAX!</div><div style="font-size:18px;color:#ffaa00">TAP FAST!</div></div>
+<div id="shop-overlay" class="overlay" onclick="closeShop()">
+<div class="overlay-title">🛒 OHIO SHOP</div>
+<div class="shop-grid" id="shop-grid" onclick="event.stopPropagation()"></div>
+<div style="color:#666;margin-top:12px;font-size:14px">tap outside to close</div>
+</div>
+<div id="rng-overlay" class="overlay">
+<div class="overlay-title">🎰 AURA CHECK</div>
+<div id="aura-spin">?</div>
+<div id="aura-name"></div>
+<div id="rng-rarity"></div>
+</div>
+<div id="break-reminder">
+<div class="break-emoji">🌟</div>
+<h2>AMAZING JOB!</h2>
+<p id="break-msg">You've been playing great! Want to take a quick stretch break?</p>
+<button onclick="closeBreak()">KEEP PLAYING! 💪</button>
+</div>
 <script>
-// ═══════════════════════════════════════════════════
-// BRAINROT DEFENSE: OHIO ULTIMATE — ENGINE v3
-// ═══════════════════════════════════════════════════
-
-// ── WORD BANKS ──
+// BRAINROT DEFENSE: OHIO ULTIMATE — ENGINE v4 (ADHD-FRIENDLY)
+// ── DIFFICULTY ──
+let DIFF='easy';
+function setDiff(d){DIFF=d;document.querySelectorAll('.diff-btn').forEach(b=>b.style.opacity=0.5);
+document.querySelector('.diff-'+d).style.opacity=1}
+setDiff('easy');
+// ── WORD BANKS (shorter words first for young players) ──
+const W0=["HI","NO","GO","YO","BRO","OK","LOL","WIN","YAY","POW","ZAP","BAM","POP","WOW"];
 const W1=["SKIBIDI","SIGMA","RIZZ","OHIO","BACON","NOOB","CAP","BET","BRUH","OOF","SUS","GOAT","YEET","DRIP","FIRE","W","MID","SLAY"];
 const W2=["GYATT","GOATED","SUSSY","BUSSIN","SHEESH","RIZZLER","FANUM","GRIDDY","RATIO","AMOGUS","DELULU","BASED","CRINGE"];
 const W3=["GRIMACE","FANUM TAX","BACKROOMS","GIGACHAD","AMONG US","DEVIOUS","MEWING","EDGING","AURA","GLAZING","PHANTOM TAX"];
 const W4=["SKIBIDI TOILET","CAMERAMAN","SPEAKERMAN","TITAN DRILLMAN","ASTRO TOILET","PLUNGERMAN"];
-
 // ── SKINS ──
 const SKINS=[
 {n:"BACON HAIR",i:"🥓",c:"skin-bacon",r:"common",clr:"#aaa"},
@@ -343,7 +304,6 @@ const SKINS=[
 {n:"GOLDEN NOOB",i:"👑",c:"skin-golden",r:"legendary",clr:"#FFD700"},
 {n:"VOID WALKER",i:"🌑",c:"skin-void",r:"mythic",clr:"#ff44ff"},
 ];
-
 // ── SHOP ITEMS ──
 const SHOP=[
 {id:'magnet',name:'RIZZ MAGNET',emoji:'🧲',desc:'+50% Rizz gain',cost:500,owned:false},
@@ -353,7 +313,6 @@ const SHOP=[
 {id:'auto_dodge',name:'AUTO DODGE',emoji:'⚡',desc:'30% dodge chance',cost:1000,owned:false},
 {id:'xp_boost',name:'XP BOOST',emoji:'📈',desc:'Faster wave progress',cost:700,owned:false},
 ];
-
 // ── ACHIEVEMENTS ──
 const ACHS={
 first_hit:{n:"First W!",d:"Land first hit",i:"🎯"},
@@ -364,42 +323,49 @@ skin1:{n:"Drip Check!",d:"First skin",i:"👕"},legendary:{n:"LEGENDARY!",d:"Pul
 boss:{n:"Toilet Slayer",d:"Kill a boss",i:"🚽"},tax:{n:"Tax Dodger",d:"Survive tax",i:"🍔"},
 shop1:{n:"Big Spender",d:"Buy from shop",i:"🛒"},dodge:{n:"Matrix Mode",d:"Dodge an attack",i:"⚡"},
 streak50:{n:"ON FIRE",d:"50 streak",i:"🔥"},
+awesome3:{n:"AWESOME!",d:"3 hits in a row",i:"⭐"},
+superstar:{n:"SUPERSTAR!",d:"Reach wave 3",i:"🌟"},
 };
 let earned=new Set();
-
+// ── ENCOURAGEMENT MESSAGES ──
+const CHEERS=["AMAZING! 🌟","YOU ROCK! 🎸","SUPER COOL! 😎","AWESOME! ⭐","GREAT JOB! 🏆","INCREDIBLE! 🔥","WOW! 💥","FANTASTIC! 🎉","UNSTOPPABLE! 💪","LEGENDARY! 👑"];
 // ── STATE ──
 let S={
 active:false,rizz:0,best:0,combo:0,maxCombo:0,streak:0,word:"",
-wave:1,waveKills:0,waveTarget:5,lives:5,maxLives:5,
+wave:1,waveKills:0,waveTarget:3,lives:7,maxLives:7,
 tax:false,taxTimer:null,enemies:[],eid:0,mew:0,totalHits:0,
 comboTimer:null,shieldTime:0,shieldActive:false,
 fireMode:false,fireTimer:null,
-heroX:50, // percentage
+heroX:50,totalWaves:0,lastBreakWave:0
 };
-
 let audioCtx,bgOsc,bgGain,bgFilter;
 let fxCanvas,fxCtx,bgCanvas,bgCtx;
 let particles=[];
 let bgStars=[];
 let enemyMoveInterval;
-
+// ══════════════════════════════════
+// DIFFICULTY SETTINGS
+// ══════════════════════════════════
+function getDiff(){
+if(DIFF==='easy')return{lives:8,maxLives:8,waveBase:3,waveMult:1,enemySpd:0.15,projSpd:0.025,critBase:0.3,puChance:0.75,taxChance:0.97,enemyAtkRate:0.15,breakEvery:4};
+if(DIFF==='hard')return{lives:4,maxLives:4,waveBase:5,waveMult:3,enemySpd:0.4,projSpd:0.05,critBase:0.18,puChance:0.87,taxChance:0.94,enemyAtkRate:0.35,breakEvery:99};
+return{lives:5,maxLives:5,waveBase:5,waveMult:2,enemySpd:0.3,projSpd:0.04,critBase:0.22,puChance:0.83,taxChance:0.95,enemyAtkRate:0.25,breakEvery:6};
+}
 // ══════════════════════════════════
 // INIT
 // ══════════════════════════════════
 function initGame(){
 if(S.active)return;S.active=true;
+const d=getDiff();S.lives=d.lives;S.maxLives=d.maxLives;S.waveTarget=d.waveBase;
 document.getElementById('title').style.display='none';
 document.getElementById('dad-dock').style.display='flex';
-
+document.getElementById('big-tap-btn').style.display='flex';
 audioCtx=new(window.AudioContext||window.webkitAudioContext)();
-
 fxCanvas=document.getElementById('fx-canvas');fxCtx=fxCanvas.getContext('2d');
 bgCanvas=document.getElementById('bg-canvas');bgCtx=bgCanvas.getContext('2d');
 resizeAll();window.addEventListener('resize',resizeAll);
-
 initBgStars();
-
-// Speech
+// Speech recognition
 try{
 const Sp=window.SpeechRecognition||window.webkitSpeechRecognition;
 const r=new Sp();r.continuous=true;r.interimResults=true;
@@ -407,43 +373,31 @@ r.onresult=e=>{const t=e.results[e.results.length-1][0].transcript.toUpperCase()
 if(t.includes(S.word)||(S.word.length>3&&t.includes(S.word.substring(0,4))))hit()};
 r.onerror=()=>{};r.onend=()=>{try{r.start()}catch(e){}};r.start();
 }catch(e){}
-
 // Tap + Swipe
 const vp=document.getElementById('viewport');
 vp.addEventListener('click',e=>{if(e.target.classList.contains('power-up'))return;if(S.active)hit()});
-
-// Keyboard dodge (left/right arrow or A/D)
 document.addEventListener('keydown',e=>{
 if(e.key==='ArrowLeft'||e.key==='a')moveHero(-15);
 if(e.key==='ArrowRight'||e.key==='d')moveHero(15);
 if(e.key===' ')hit();
 });
-
-// Touch swipe for dodge
 let touchX=0;
 vp.addEventListener('touchstart',e=>{touchX=e.touches[0].clientX},{passive:true});
 vp.addEventListener('touchend',e=>{
 const dx=e.changedTouches[0].clientX-touchX;
 if(Math.abs(dx)>50)moveHero(dx>0?12:-12);
 },{passive:true});
-
-startBgMusic();
-announceWave(1);
+startBgMusic();announceWave(1);updateHud();
 setTimeout(()=>{spawnEnemy('toilet');nextWord()},1200);
-
-// Enemy movement + attack loop
 enemyMoveInterval=setInterval(enemyTick,1500);
-
 requestAnimationFrame(gameLoop);
 }
-
 function resizeAll(){
 fxCanvas.width=bgCanvas.width=innerWidth;
 fxCanvas.height=bgCanvas.height=innerHeight;
 }
-
 // ══════════════════════════════════
-// BG STARS (canvas)
+// BG STARS
 // ══════════════════════════════════
 function initBgStars(){
 bgStars=[];
@@ -451,16 +405,12 @@ for(let i=0;i<120;i++){
 bgStars.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight*0.6,
 s:0.5+Math.random()*2,b:Math.random(),sp:0.005+Math.random()*0.015});
 }}
-
 function drawBg(){
 bgCtx.clearRect(0,0,bgCanvas.width,bgCanvas.height);
-// Sky gradient
 const grd=bgCtx.createLinearGradient(0,0,0,bgCanvas.height*0.65);
 grd.addColorStop(0,'#06060f');grd.addColorStop(0.3,'#0b0033');grd.addColorStop(0.6,'#1a0044');
 grd.addColorStop(0.85,'#3d0066');grd.addColorStop(1,'#ff6600');
 bgCtx.fillStyle=grd;bgCtx.fillRect(0,0,bgCanvas.width,bgCanvas.height*0.7);
-
-// Stars
 bgStars.forEach(s=>{
 s.b+=s.sp;if(s.b>1||s.b<0)s.sp*=-1;
 bgCtx.globalAlpha=0.3+s.b*0.7;
@@ -468,28 +418,24 @@ bgCtx.fillStyle=s.s>1.5?'#FFD700':'#fff';
 bgCtx.beginPath();bgCtx.arc(s.x,s.y,s.s,0,Math.PI*2);bgCtx.fill();
 });
 bgCtx.globalAlpha=1;
-
-// Moon
 bgCtx.fillStyle='#fffbe6';bgCtx.shadowColor='rgba(255,215,0,0.4)';bgCtx.shadowBlur=40;
 bgCtx.beginPath();bgCtx.arc(bgCanvas.width*0.85,bgCanvas.height*0.1,35,0,Math.PI*2);bgCtx.fill();
 bgCtx.shadowBlur=0;
 }
-
-// ══════════════════════════════════
-// GAME LOOP
-// ══════════════════════════════════
 function gameLoop(){
 if(!S.active){drawBg();drawParticles();return;}
 drawBg();
 fxCtx.clearRect(0,0,fxCanvas.width,fxCanvas.height);
 drawParticles();
 requestAnimationFrame(gameLoop);
-}
-
+  }
 // ══════════════════════════════════
-// WORDS
+// WORDS (ADHD: shorter words, always show hint)
 // ══════════════════════════════════
 function getPool(){
+if(DIFF==='easy'){
+if(S.wave>=10)return[...W1,...W2];if(S.wave>=5)return[...W0,...W1];return W0;
+}
 if(S.wave>=12)return[...W3,...W4];if(S.wave>=7)return[...W2,...W3,...W4];
 if(S.wave>=4)return[...W1,...W2,...W3];return W1;
 }
@@ -497,113 +443,142 @@ function nextWord(){
 const p=getPool();S.word=p[Math.floor(Math.random()*p.length)];
 const el=document.getElementById('word-target');
 const r=Math.random();
-if(r<0.15)el.innerHTML=`<span class="brainrot-txt">${S.word}</span>`;
-else if(r<0.25&&S.wave>=3)el.innerHTML=`<span class="word-fire">${S.word}</span>`;
-else if(r<0.32&&S.wave>=5)el.innerHTML=`<span class="word-ice">${S.word}</span>`;
+if(r<0.15)el.innerHTML='<span class="brainrot-txt">'+S.word+'</span>';
+else if(r<0.25&&S.wave>=3)el.innerHTML='<span class="word-fire">'+S.word+'</span>';
+else if(r<0.32&&S.wave>=5)el.innerHTML='<span class="word-ice">'+S.word+'</span>';
 else el.textContent=S.word;
-
-// Hint for little ones
+// Always show hint for easy mode, first few waves for others
 const sub=document.getElementById('word-sub');
-if(S.wave<=2&&S.word.length<=5)sub.textContent=`say "${S.word}" or tap!`;
+if(DIFF==='easy'||S.wave<=3)sub.textContent='SAY "'+S.word+'" OR TAP! 👆';
 else sub.textContent='';
-
 el.classList.remove('word-hit');playSfx('pop');
 }
-
 // ══════════════════════════════════
-// HIT
+// HIT (ADHD: more rewards, encouragement)
 // ══════════════════════════════════
 function hit(){
 if(!S.active)return;
 if(S.tax){endTax(true);return}
-
 S.totalHits++;if(S.totalHits===1)ach('first_hit');
-
 // Combo
 S.combo++;clearTimeout(S.comboTimer);
+// Longer combo window for easy mode
+const comboTime=DIFF==='easy'?4500:DIFF==='normal'?3200:2800;
 S.comboTimer=setTimeout(()=>{S.combo=0;S.fireMode=false;clearTimeout(S.fireTimer);
-document.getElementById('combo-border').className='';updateHud()},2800);
-
+document.getElementById('combo-border').className='';updateHud()},comboTime);
+if(S.combo>=3)ach('awesome3');
 if(S.combo>=5){ach('combo5');document.getElementById('combo-border').className='combo-active'}
 if(S.combo>=10){ach('combo10');document.getElementById('combo-border').className='combo-active fire-mode';
 if(!S.fireMode){S.fireMode=true;spawnFloat('🔥 FIRE MODE!','var(--rd)',true)}}
 if(S.combo>=20)ach('combo20');
 if(S.combo>S.maxCombo)S.maxCombo=S.combo;
-
 S.streak++;if(S.streak>=50)ach('streak50');
-
 // Mewing
 if(S.streak>=5){
 S.mew=Math.min(8,Math.floor(S.streak/5));
 const jaw=document.querySelector('.jaw');
 jaw.style.display='block';jaw.style.height=(10+S.mew*6)+'px';
 }
-
 // Aura
-document.getElementById('hero-aura').classList.toggle('aura-active',S.combo>=5);
-
-// Points
-let base=10;
-if(shopOwned('magnet'))base=15;
+document.getElementById('hero-aura').classList.toggle('aura-active',S.combo>=3);
+// Points (more generous in easy mode)
+let base=DIFF==='easy'?15:10;
+if(shopOwned('magnet'))base=Math.floor(base*1.5);
 const mult=Math.min(S.combo,15);
 let pts=base*mult;
 if(S.fireMode)pts=Math.floor(pts*1.5);
 S.rizz+=pts;if(S.rizz>S.best)S.best=S.rizz;
 if(S.rizz>=500)ach('rizz500');if(S.rizz>=2000)ach('rizz2k');if(S.rizz>=5000)ach('rizz5k');
-
 // Float
-spawnFloat(`+${pts}`,S.combo>=10?'var(--rd)':S.combo>=5?'var(--pk)':'var(--gd)');
-if(S.combo>0&&S.combo%5===0)spawnFloat(`${S.combo}x COMBO!`,'var(--pk)',true);
+spawnFloat('+'+pts,S.combo>=10?'var(--rd)':S.combo>=5?'var(--pk)':'var(--gd)');
+if(S.combo>0&&S.combo%3===0)spawnFloat(S.combo+'x COMBO!','var(--pk)',true);
 if(S.combo===10)spawnFloat('🔥 FIRE MODE 🔥','var(--rd)',true);
-
+// ADHD: Frequent encouragement
+if(S.totalHits%5===0||S.combo%4===0){
+showEncourage();
+}
+// Rainbow celebration every 8 hits
+if(S.totalHits%8===0){
+document.getElementById('combo-border').classList.add('rainbow-mode');
+setTimeout(()=>document.getElementById('combo-border').classList.remove('rainbow-mode'),2000);
+}
 // Visual hit
 const el=document.getElementById('word-target');el.classList.add('word-hit');
 setTimeout(()=>el.classList.remove('word-hit'),250);
 const hero=document.getElementById('hero-rig');hero.classList.add('hit-flash');
 setTimeout(()=>hero.classList.remove('hit-flash'),120);
-
 // Face change
 const face=document.querySelector('.face');
-const faces=['😎','🤩','😤','💪','🔥','⚡'];
+const faces=['😎','🤩','😤','💪','🔥','⚡','🥳','😊'];
 face.textContent=faces[Math.floor(Math.random()*faces.length)];
 setTimeout(()=>face.textContent='🙂',600);
-
 // Crit
-const critChance=shopOwned('crits')?0.35:0.18;
+const d=getDiff();
+const critChance=shopOwned('crits')?d.critBase*2:d.critBase;
 if(Math.random()<critChance){
 playSfx('vine');shakeScreen(false);
-burstParticles(fxCanvas.width/2,fxCanvas.height*0.4,25,'#FFD700');
+burstParticles(fxCanvas.width/2,fxCanvas.height*0.4,30,'#FFD700');
 spawnFloat('💥 CRIT!','#FF6600',true);
-S.rizz+=pts; // double on crit
+S.rizz+=pts;
 }else{playSfx('hit')}
-
 // Damage enemies
 damageTop();
-
-// Wave
-S.waveKills+=(shopOwned('xp_boost')?2:1);
+// Wave progress (faster in easy)
+const xpGain=DIFF==='easy'?2:shopOwned('xp_boost')?2:1;
+S.waveKills+=xpGain;
 updateXp();
 if(S.waveKills>=S.waveTarget)advanceWave();
-
-// Power-up chance
-if(Math.random()>0.87)dropPowerUp();
-// Random tax
-if(Math.random()>0.94&&S.wave>=2)triggerTax();
-
+// Power-up chance (more frequent in easy)
+if(Math.random()>d.puChance)dropPowerUp();
+// Random tax (less frequent in easy)
+if(Math.random()>d.taxChance&&S.wave>=3)triggerTax();
 // Buttons
-if(S.rizz>=150){document.getElementById('rng-btn').style.display='block';document.getElementById('shop-btn').style.display='block'}
-
+if(S.rizz>=100){document.getElementById('rng-btn').style.display='block';document.getElementById('shop-btn').style.display='block'}
+// Extra particles on every hit for visual feedback
+burstParticles(fxCanvas.width/2,fxCanvas.height*0.35,8,'var(--g)');
 updateHud();nextWord();
 }
-
 // ══════════════════════════════════
-// HERO MOVEMENT (Dodge)
+// ENCOURAGEMENT (ADHD: positive reinforcement)
+// ══════════════════════════════════
+function showEncourage(){
+const el=document.getElementById('encourage');
+const msg=CHEERS[Math.floor(Math.random()*CHEERS.length)];
+const colors=['var(--g)','var(--pk)','var(--cy)','var(--gd)','#ff6600','#ff44ff'];
+el.textContent=msg;
+el.style.color=colors[Math.floor(Math.random()*colors.length)];
+el.style.textShadow='0 0 20px currentColor,3px 3px 0 #000';
+el.classList.add('encourage-show');
+setTimeout(()=>el.classList.remove('encourage-show'),1200);
+}
+// ══════════════════════════════════
+// BREAK REMINDER (ADHD: healthy breaks)
+// ══════════════════════════════════
+function checkBreak(){
+const d=getDiff();
+if(S.wave-S.lastBreakWave>=d.breakEvery&&S.lastBreakWave!==S.wave){
+S.lastBreakWave=S.wave;
+const msgs=[
+"You have been playing great! How about a quick stretch? 🙆",
+"WOW you are so good! Take a deep breath! 🌬️",
+"You are a CHAMPION! Maybe grab some water? 💧",
+"INCREDIBLE skills! Wiggle your fingers for a sec! 🖐️",
+"You are on FIRE! Do 5 jumping jacks! 🏃"
+];
+document.getElementById('break-msg').textContent=msgs[Math.floor(Math.random()*msgs.length)];
+document.getElementById('break-reminder').style.display='flex';
+}
+}
+function closeBreak(){
+document.getElementById('break-reminder').style.display='none';
+}
+// ══════════════════════════════════
+// HERO MOVEMENT
 // ══════════════════════════════════
 function moveHero(dx){
 S.heroX=Math.max(10,Math.min(90,S.heroX+dx));
 document.getElementById('hero-wrap').style.left=S.heroX+'%';
 }
-
 // ══════════════════════════════════
 // ENEMIES
 // ══════════════════════════════════
@@ -612,36 +587,32 @@ const id=S.eid++;const c=document.getElementById('enemies');
 const el=document.createElement('div');
 el.className='enemy-rig'+(type==='cam'?' enemy-cam':'')+(type==='boss'?' enemy-boss':'');
 el.id='e'+id;
-
-const hp=type==='boss'?10+S.wave*3:type==='cam'?4+S.wave:2+Math.floor(S.wave*0.7);
+const hpMult=DIFF==='easy'?0.5:DIFF==='hard'?1.2:1;
+const hp=Math.max(1,Math.floor((type==='boss'?10+S.wave*3:type==='cam'?4+S.wave:2+Math.floor(S.wave*0.7))*hpMult));
 const mx=hp;
 const faces=['🤪','😈','💀','🤡','👹','😤','🥴','👺'];
 const f=faces[Math.floor(Math.random()*faces.length)];
 const lx=10+Math.random()*65;const ty=3+Math.random()*14;
 const sc=type==='boss'?1.2:0.65+Math.random()*0.4;
-
-el.style.cssText=`left:${lx}%;top:${ty}%;transform:scale(0);opacity:0`;
-el.innerHTML=`<div class="enemy-hp-bar"><div class="enemy-hp-fill" id="hp${id}"></div></div>
-<div class="toilet-head">${f}</div><div class="toilet-tank"></div><div class="toilet-bowl"></div>
-<div class="enemy-label">${type==='boss'?'⭐ BOSS':type==='cam'?'CAMERAMAN':'SKIBIDI'} LV${S.wave}</div>`;
+el.style.cssText='left:'+lx+'%;top:'+ty+'%;transform:scale(0);opacity:0';
+el.innerHTML='<div class="enemy-hp-bar"><div class="enemy-hp-fill" id="hp'+id+'"></div></div>'+
+'<div class="toilet-head">'+f+'</div><div class="toilet-tank"></div><div class="toilet-bowl"></div>'+
+'<div class="enemy-label">'+(type==='boss'?'⭐ BOSS':type==='cam'?'CAMERAMAN':'SKIBIDI')+' LV'+S.wave+'</div>';
 c.appendChild(el);
-
-requestAnimationFrame(()=>{el.style.transform=`scale(${sc})`;el.style.opacity='1'});
+requestAnimationFrame(()=>{el.style.transform='scale('+sc+')';el.style.opacity='1'});
 S.enemies.push({id,el,hp,mx,type,sc,lx,ty,moveDir:Math.random()>0.5?1:-1});
 playSfx('spawn');
 }
-
 function damageTop(){
 if(!S.enemies.length)return;
 const e=S.enemies[0];e.hp--;
 const pct=Math.max(0,(e.hp/e.mx)*100);
 const hpEl=document.getElementById('hp'+e.id);
 if(hpEl)hpEl.style.width=pct+'%';
-e.el.style.transform=`scale(${e.sc}) rotate(${(Math.random()-0.5)*20}deg)`;
-setTimeout(()=>{if(e.el)e.el.style.transform=`scale(${e.sc})`},120);
+e.el.style.transform='scale('+e.sc+') rotate('+(Math.random()-0.5)*20+'deg)';
+setTimeout(()=>{if(e.el)e.el.style.transform='scale('+e.sc+')'},120);
 if(e.hp<=0)killEnemy(e);
 }
-
 function killEnemy(e){
 const r=e.el.getBoundingClientRect();
 burstParticles(r.left+r.width/2,r.top+r.height/2,35,'#FF6600');
@@ -649,110 +620,101 @@ burstParticles(r.left+r.width/2,r.top+r.height/2,15,'#FFD700');
 e.el.classList.add('dying');
 setTimeout(()=>{if(e.el.parentNode)e.el.parentNode.removeChild(e.el)},500);
 S.enemies=S.enemies.filter(x=>x.id!==e.id);
-
 const bonus=e.type==='boss'?300:e.type==='cam'?100:50;
-S.rizz+=bonus;spawnFloat(`+${bonus} KILL!`,'var(--rd)',true);
+S.rizz+=bonus;spawnFloat('+'+bonus+' KILL!','var(--rd)',true);
 playSfx('yippee');shakeScreen(e.type==='boss');
 if(e.type==='boss')ach('boss');
-
+// Extra celebration for kills
+showEncourage();
 if(!S.enemies.length){
 setTimeout(()=>{if(S.active){
 const types=S.wave>=8?['toilet','cam','boss']:S.wave>=4?['toilet','cam']:['toilet'];
 spawnEnemy(types[Math.floor(Math.random()*types.length)]);
-}},600);
+}},800);
 }
 }
-
-// ── ENEMY AI ──
+// ── ENEMY AI (slower in easy mode) ──
 function enemyTick(){
 if(!S.active)return;
+const d=getDiff();
 S.enemies.forEach(e=>{
-// Move
-e.lx+=e.moveDir*(1+S.wave*0.3);
+e.lx+=e.moveDir*(d.enemySpd+S.wave*0.15);
 if(e.lx>80||e.lx<5)e.moveDir*=-1;
 e.el.style.left=e.lx+'%';
-
-// Attack (projectile)
-if(Math.random()<0.3+S.wave*0.03){
+if(Math.random()<d.enemyAtkRate+S.wave*0.02){
 fireProjectile(e);
 }
 });
 }
-
 function fireProjectile(e){
 const el=document.createElement('div');
 el.className='projectile';
 const startX=e.lx;const startY=parseInt(e.el.style.top)||10;
 el.style.left=startX+'%';el.style.top=startY+'%';
 el.style.background=e.type==='boss'?'radial-gradient(#f00,#600)':'radial-gradient(#f60,#630)';
-el.style.boxShadow=`0 0 10px ${e.type==='boss'?'red':'orange'}`;
+el.style.boxShadow='0 0 10px '+(e.type==='boss'?'red':'orange');
 document.getElementById('viewport').appendChild(el);
-
-// Animate toward hero
 const heroX=S.heroX;
+const d=getDiff();
 let t=0;const iv=setInterval(()=>{
-t+=0.04;
+t+=d.projSpd;
 const cx=startX+(heroX-startX)*t;
 const cy=startY+(80-startY)*t;
 el.style.left=cx+'%';el.style.top=cy+'%';
-
 if(t>=1){
 clearInterval(iv);
 if(el.parentNode)el.parentNode.removeChild(el);
-// Check if hero dodged
 const dist=Math.abs(cx-S.heroX);
-const dodgeChance=shopOwned('auto_dodge')?0.3:0;
+const dodgeChance=DIFF==='easy'?0.4:shopOwned('auto_dodge')?0.3:0;
 if(dist<12&&Math.random()>dodgeChance){
 if(S.shieldActive){
 S.shieldActive=false;
 document.getElementById('shield-bubble').classList.remove('shield-active');
 spawnFloat('🛡️ BLOCKED!','var(--cy)',true);
 playSfx('shield');
-}else{
-loseLife();
-}
-}else{
-ach('dodge');
-}
+}else{loseLife();}
+}else{ach('dodge');}
 }
 },50);
-
-setTimeout(()=>{clearInterval(iv);if(el.parentNode)el.parentNode.removeChild(el)},3000);
+setTimeout(()=>{clearInterval(iv);if(el.parentNode)el.parentNode.removeChild(el)},4000);
 }
-
 // ══════════════════════════════════
 // WAVES
 // ══════════════════════════════════
 function advanceWave(){
-S.wave++;S.waveKills=0;S.waveTarget=5+S.wave*3;
+const d=getDiff();
+S.wave++;S.waveKills=0;S.waveTarget=d.waveBase+S.wave*d.waveMult;
+if(S.wave>=3)ach('superstar');
 if(S.wave>=5)ach('wave5');if(S.wave>=10)ach('wave10');if(S.wave>=15)ach('wave15');
 announceWave(S.wave);
-
+// Check break reminder
+checkBreak();
 setTimeout(()=>{
-const count=Math.min(S.wave,5);
+const count=DIFF==='easy'?Math.min(S.wave,3):Math.min(S.wave,5);
 for(let i=0;i<count;i++){
 setTimeout(()=>{
 const types=S.wave>=10?['toilet','cam','boss']:S.wave>=5?['toilet','cam','boss']:S.wave>=3?['toilet','cam']:['toilet'];
 spawnEnemy(types[Math.floor(Math.random()*types.length)]);
 },i*350);
 }},1000);
+// Bonus life every few waves in easy mode
+if(DIFF==='easy'&&S.wave%3===0&&S.lives<S.maxLives){
+addLife();spawnFloat('+1 BONUS LIFE!','#f44',true);
+}
 updateHud();
 }
-
 function announceWave(n){
 const el=document.getElementById('wave-ann');
 const t=["","WAVE 1","WAVE 2","HERE THEY COME","OHIO WORSENS","SIGMA WAVE","GYATT LEVEL","FANUM ZONE","BACKROOMS","SKIBIDI TSUNAMI","FINAL BOSS","BEYOND OHIO","ASCENSION","VOID REALM","MYTHIC TIER","∞ MODE"];
-el.textContent=t[Math.min(n,15)]||`WAVE ${n}`;
+el.textContent=t[Math.min(n,15)]||('WAVE '+n);
 el.style.transform='translate(-50%,-50%) scale(1)';el.style.opacity='1';
 playSfx('wave');
 setTimeout(()=>{el.style.transform='translate(-50%,-50%) scale(0)';el.style.opacity='0'},2000);
 }
-
 function updateXp(){
 const pct=Math.min(100,(S.waveKills/S.waveTarget)*100);
 document.getElementById('xp-fill').style.width=pct+'%';
 }
-
 // ══════════════════════════════════
 // FANUM TAX
 // ══════════════════════════════════
@@ -761,10 +723,9 @@ if(S.tax)return;S.tax=true;
 document.getElementById('tax-event').style.display='flex';
 playSfx('vine');shakeScreen(true);
 S.word="TAX";document.getElementById('word-target').textContent="TAX";
-const drainRate=shopOwned('tax_resist')?1:3;
+const drainRate=DIFF==='easy'?0.5:shopOwned('tax_resist')?1:3;
 S.taxTimer=setInterval(()=>{if(S.rizz>0)S.rizz=Math.max(0,S.rizz-drainRate);updateHud()},60);
 }
-
 function endTax(win){
 S.tax=false;clearInterval(S.taxTimer);
 document.getElementById('tax-event').style.display='none';
@@ -772,9 +733,8 @@ if(win){S.rizz+=120;spawnFloat('+120 TAX PAID!','var(--g)',true);playSfx('yippee
 else playSfx('oof');
 updateHud();nextWord();
 }
-
 // ══════════════════════════════════
-// POWER-UPS
+// POWER-UPS (more frequent drops)
 // ══════════════════════════════════
 function dropPowerUp(){
 const types=[
@@ -785,31 +745,29 @@ const types=[
 const t=types[Math.floor(Math.random()*types.length)];
 const el=document.createElement('div');el.className='power-up';
 el.style.left=(12+Math.random()*72)+'%';
-el.style.background=`radial-gradient(circle,${t.cl},#111)`;
+el.style.background='radial-gradient(circle,'+t.cl+',#111)';
 el.textContent=t.e;
 el.onclick=e=>{e.stopPropagation();collectPU(t,el)};
 document.getElementById('viewport').appendChild(el);
-setTimeout(()=>{if(el.parentNode)el.parentNode.removeChild(el)},5500);
+setTimeout(()=>{if(el.parentNode)el.parentNode.removeChild(el)},6500);
 }
-
 function collectPU(t,el){
 const r=el.getBoundingClientRect();
-burstParticles(r.left+23,r.top+23,12,'#fff');
+burstParticles(r.left+23,r.top+23,15,'#fff');
 el.parentNode.removeChild(el);playSfx('powerup');
-
 switch(t.n){
 case'life':addLife();spawnFloat('+1 LIFE!','#f44',true);break;
 case'double':S.rizz+=S.combo*25;spawnFloat('DOUBLE RIZZ!','var(--gd)',true);break;
 case'shield':S.shieldActive=true;document.getElementById('shield-bubble').classList.add('shield-active');
-spawnFloat('🛡️ SHIELD!','var(--cy)',true);setTimeout(()=>{S.shieldActive=false;document.getElementById('shield-bubble').classList.remove('shield-active')},8000);break;
+spawnFloat('🛡️ SHIELD!','var(--cy)',true);setTimeout(()=>{S.shieldActive=false;document.getElementById('shield-bubble').classList.remove('shield-active')},10000);break;
 case'gems':S.rizz+=200;spawnFloat('+200 GEMS!','#CE93D8',true);break;
 case'fire':S.fireMode=true;S.combo=Math.max(S.combo,10);document.getElementById('combo-border').className='combo-active fire-mode';
-spawnFloat('🔥 FIRE MODE!','var(--rd)',true);clearTimeout(S.fireTimer);S.fireTimer=setTimeout(()=>{S.fireMode=false},6000);break;
+spawnFloat('🔥 FIRE MODE!','var(--rd)',true);clearTimeout(S.fireTimer);S.fireTimer=setTimeout(()=>{S.fireMode=false},8000);break;
 case'star':S.enemies.forEach(e=>{e.hp=0;killEnemy(e)});spawnFloat('⭐ CLEAR ALL!','#fff',true);break;
 }
+showEncourage();
 updateHud();
-}
-
+  }
 // ══════════════════════════════════
 // SHOP
 // ══════════════════════════════════
@@ -818,7 +776,7 @@ const g=document.getElementById('shop-grid');g.innerHTML='';
 SHOP.forEach(item=>{
 const d=document.createElement('div');
 d.className='shop-item'+(item.owned?' owned':'');
-d.innerHTML=`<div class="shop-emoji">${item.emoji}</div><div class="shop-name">${item.name}</div><div style="font-size:12px;color:#888;margin:4px 0">${item.desc}</div><div class="shop-cost">${item.owned?'✅ OWNED':'⚡'+item.cost}</div>`;
+d.innerHTML='<div class="shop-emoji">'+item.emoji+'</div><div class="shop-name">'+item.name+'</div><div style="font-size:12px;color:#888;margin:4px 0">'+item.desc+'</div><div class="shop-cost">'+(item.owned?'✅ OWNED':'⚡'+item.cost)+'</div>';
 d.onclick=()=>{
 if(item.owned||S.rizz<item.cost)return;
 S.rizz-=item.cost;item.owned=true;
@@ -831,7 +789,6 @@ document.getElementById('shop-overlay').style.display='block';
 }
 function closeShop(){document.getElementById('shop-overlay').style.display='none'}
 function shopOwned(id){return SHOP.find(s=>s.id===id)?.owned||false}
-
 // ══════════════════════════════════
 // LIVES
 // ══════════════════════════════════
@@ -845,63 +802,57 @@ document.querySelector('.face').textContent='😵';setTimeout(()=>document.query
 updateHud();
 if(S.lives<=0)gameOver();
 }
-
 function gameOver(){
 S.active=false;clearInterval(enemyMoveInterval);
-document.getElementById('word-target').innerHTML=`<div style="font-size:clamp(22px,5vw,44px);line-height:1.4">
-GAME OVER<br><span style="font-size:0.55em;color:var(--gd)">RIZZ: ${S.rizz} | WAVE: ${S.wave} | MAX COMBO: ${S.maxCombo}x</span>
-<br><span style="font-size:0.45em;color:#888">TAP TO RESTART</span></div>`;
+document.getElementById('big-tap-btn').style.display='none';
+document.getElementById('word-target').innerHTML='<div style="font-size:clamp(22px,5vw,44px);line-height:1.4">'+
+'GAME OVER<br><span style="font-size:0.6em;color:var(--gd)">RIZZ: '+S.rizz+' | WAVE: '+S.wave+' | MAX COMBO: '+S.maxCombo+'x</span>'+
+'<br><span style="font-size:0.5em;color:var(--g)">YOU DID AMAZING! 🌟</span>'+
+'<br><span style="font-size:0.45em;color:#888">TAP TO PLAY AGAIN</span></div>';
 playSfx('gameover');
 burstParticles(fxCanvas.width/2,fxCanvas.height/2,50,'#ff0000');
 document.getElementById('viewport').onclick=()=>location.reload();
 }
-
 // ══════════════════════════════════
 // RNG GACHA
 // ══════════════════════════════════
 function rollRng(){
-if(S.rizz<150)return;S.rizz-=150;updateHud();
+if(S.rizz<100)return;S.rizz-=100;updateHud();
 document.getElementById('rng-btn').style.display='none';
 document.getElementById('rng-overlay').style.display='flex';
-
 let i=0;const iv=setInterval(()=>{
 const s=SKINS[Math.floor(Math.random()*SKINS.length)];
 document.getElementById('aura-spin').textContent=s.i;
-document.getElementById('aura-spin').style.transform=`rotate(${i*24}deg) scale(${1+Math.sin(i*0.3)*0.3})`;
+document.getElementById('aura-spin').style.transform='rotate('+i*24+'deg) scale('+(1+Math.sin(i*0.3)*0.3)+')';
 playSfx('pop');i++;
 if(i>25){
 clearInterval(iv);
 const roll=Math.random();let pool;
-if(roll<0.02)pool=SKINS.filter(s=>s.r==='mythic');
-else if(roll<0.08)pool=SKINS.filter(s=>s.r==='legendary');
-else if(roll<0.22)pool=SKINS.filter(s=>s.r==='epic');
-else if(roll<0.5)pool=SKINS.filter(s=>s.r==='rare');
+if(roll<0.04)pool=SKINS.filter(s=>s.r==='mythic');
+else if(roll<0.12)pool=SKINS.filter(s=>s.r==='legendary');
+else if(roll<0.28)pool=SKINS.filter(s=>s.r==='epic');
+else if(roll<0.55)pool=SKINS.filter(s=>s.r==='rare');
 else pool=SKINS.filter(s=>s.r==='common');
 const w=pool[Math.floor(Math.random()*pool.length)];
-
 document.getElementById('aura-spin').textContent=w.i;
 document.getElementById('aura-spin').style.transform='scale(1.4)';
 document.getElementById('aura-name').textContent=w.n;
 const re=document.getElementById('rng-rarity');
-re.textContent=`[ ${w.r.toUpperCase()} ]`;re.className='rarity-'+w.r;
-
+re.textContent='[ '+w.r.toUpperCase()+' ]';re.className='rarity-'+w.r;
 document.getElementById('hero-rig').className=w.c;
 ach('skin1');
 if(w.r==='legendary')ach('legendary');
 if(w.r==='mythic')ach('mythic');
-
 burstParticles(fxCanvas.width/2,fxCanvas.height/2,45,w.clr);
 playSfx(w.r==='mythic'||w.r==='legendary'?'legendary':'yippee');
 shakeScreen(w.r==='legendary'||w.r==='mythic');
-
 setTimeout(()=>{
 document.getElementById('rng-overlay').style.display='none';
-if(S.rizz>=150)document.getElementById('rng-btn').style.display='block';
+if(S.rizz>=100)document.getElementById('rng-btn').style.display='block';
 },2800);
 }
 },70);
 }
-
 // ══════════════════════════════════
 // ACHIEVEMENTS
 // ══════════════════════════════════
@@ -909,11 +860,11 @@ function ach(k){
 if(earned.has(k))return;const a=ACHS[k];if(!a)return;
 earned.add(k);
 const t=document.createElement('div');t.className='ach-toast';
-t.innerHTML=`<div class="ach-label">🏆 ACHIEVEMENT</div><div>${a.i} ${a.n}</div><div style="font-size:12px;color:#888">${a.d}</div>`;
+t.innerHTML='<div class="ach-label">🏆 ACHIEVEMENT</div><div>'+a.i+' '+a.n+'</div><div style="font-size:12px;color:#888">'+a.d+'</div>';
 document.body.appendChild(t);playSfx('achievement');
+burstParticles(fxCanvas.width/2,80,20,'#FFD700');
 setTimeout(()=>{if(t.parentNode)t.parentNode.removeChild(t)},4000);
 }
-
 // ══════════════════════════════════
 // HUD
 // ══════════════════════════════════
@@ -926,7 +877,6 @@ document.getElementById('best').textContent=S.best;
 document.getElementById('lives').textContent='★'.repeat(Math.max(0,S.lives))+'☆'.repeat(Math.max(0,S.maxLives-S.lives));
 updateXp();
 }
-
 function spawnFloat(text,color,big){
 const el=document.createElement('div');
 el.className='float-text'+(big?' float-big':'');
@@ -935,13 +885,11 @@ el.style.left=(25+Math.random()*50)+'%';el.style.top=(20+Math.random()*25)+'%';
 document.getElementById('viewport').appendChild(el);
 setTimeout(()=>{if(el.parentNode)el.parentNode.removeChild(el)},1300);
 }
-
 function shakeScreen(big){
 const vp=document.getElementById('viewport');
 vp.classList.remove('screen-shake','screen-shake-big');void vp.offsetWidth;
 vp.classList.add(big?'screen-shake-big':'screen-shake');
-}
-
+                                                }
 // ══════════════════════════════════
 // PARTICLES
 // ══════════════════════════════════
@@ -951,7 +899,6 @@ const a=(Math.PI*2/n)*i+Math.random()*0.5;const sp=2+Math.random()*7;
 particles.push({x,y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp-3,life:1,
 decay:0.012+Math.random()*0.02,size:2+Math.random()*6,color:c});
 }}
-
 function drawParticles(){
 for(let i=particles.length-1;i>=0;i--){
 const p=particles[i];p.x+=p.vx;p.y+=p.vy;p.vy+=0.12;p.life-=p.decay;
@@ -962,7 +909,6 @@ fxCtx.beginPath();fxCtx.arc(p.x,p.y,p.size*p.life,0,Math.PI*2);fxCtx.fill();
 }
 fxCtx.globalAlpha=1;fxCtx.shadowBlur=0;
 }
-
 // ══════════════════════════════════
 // AUDIO
 // ══════════════════════════════════
@@ -1010,8 +956,6 @@ g.gain.setValueAtTime(.35,n);g.gain.linearRampToValueAtTime(0,n+1.2);o.start(n);
 default:o.frequency.setValueAtTime(600,n);g.gain.setValueAtTime(.04,n);o.start(n);o.stop(n+.04)
 }
 }
-
-// BG MUSIC
 function startBgMusic(){
 bgOsc=audioCtx.createOscillator();bgGain=audioCtx.createGain();
 bgFilter=audioCtx.createBiquadFilter();bgFilter.type='lowpass';bgFilter.frequency.value=180;
@@ -1021,8 +965,7 @@ const notes=[55,55,73.42,55,82.41,55,73.42,82.41];
 function sched(t){for(let i=0;i<80;i++)bgOsc.frequency.setValueAtTime(notes[i%notes.length],t+i*.22)}
 sched(audioCtx.currentTime);setInterval(()=>sched(audioCtx.currentTime),17600);bgOsc.start();
 }
-
-function addRizz(n){S.rizz+=n;updateHud();spawnFloat(`+${n}`,'var(--gd)',true)}
+function addRizz(n){S.rizz+=n;updateHud();spawnFloat('+'+n,'var(--gd)',true)}
 </script>
 </body>
 </html>
